@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,7 +32,7 @@ namespace MyMusicLibrary
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
- //Music Library opened, file picked, file copied in "musicfolder" in apps local folder
+            //Music Library opened, file picked, file copied in "musicfolder" in apps local folder
             var picker = new Windows.Storage.Pickers.FileOpenPicker
             {
                 ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
@@ -54,8 +55,12 @@ namespace MyMusicLibrary
             {
                 await file.CopyAsync(musicFolder, file.Name, NameCollisionOption.GenerateUniqueName);
             };
+
+            //set media player source to file and play
+            mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+            mediaPlayer.MediaPlayer.Play();
         }
-        
+
 
     }
 }
