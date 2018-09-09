@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-      <Button Content="Add Music" HorizontalAlignment="center" Margin="50,50,50,50" VerticalAlignment="Center" Click="Button_Click"/>
+      <Grid.Background>
+        <ImageBrush Stretch="Fill" ImageSource="Assets/headphones.jpg"/>
+      </Grid.Background>
+      
+        <Button Content="Add Music" HorizontalAlignment="center" BorderBrush="Black" Background="Gray" Foreground="White" Margin="50,50,50,50" VerticalAlignment="Center" Click="Button_Click"/>
+    
     </Grid>
 </Page>
