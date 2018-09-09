@@ -26,5 +26,37 @@ namespace MyMusicLibrary
         {
             this.InitializeComponent();
         }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+ //Music Library opened, file picked, file copied in "musicfolder" in apps local folder
+            var picker = new Windows.Storage.Pickers.FileOpenPicker
+            {
+                ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
+                SuggestedStartLocation =
+            Windows.Storage.Pickers.PickerLocationId.MusicLibrary
+            };
+
+            picker.FileTypeFilter.Add(".mp3");
+            picker.FileTypeFilter.Add(".mp4");
+            picker.FileTypeFilter.Add(".m4a");
+
+            var file = await picker.PickSingleFileAsync();
+            var folder = ApplicationData.Current.LocalFolder;
+            var musicFolder = await folder.CreateFolderAsync("musicfolder", CreationCollisionOption.OpenIfExists);
+
+            //put file in future access list so it can be accessed when application is closed and reopened
+            Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
+            //File is copied to local folder for use in music library
+            if (folder != null && file != null)
+            {
+                await file.CopyAsync(musicFolder, file.Name, NameCollisionOption.GenerateUniqueName);
+            };
+        }
+        
+
     }
 }
+    
+

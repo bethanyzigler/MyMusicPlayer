@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+      <Button Content="Add Music" HorizontalAlignment="center" Margin="50,50,50,50" VerticalAlignment="Center" Click="Button_Click"/>
     </Grid>
 </Page>
