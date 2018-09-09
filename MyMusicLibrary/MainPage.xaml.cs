@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -54,8 +55,12 @@ namespace MyMusicLibrary
             {
                 await file.CopyAsync(musicFolder, file.Name, NameCollisionOption.GenerateUniqueName);
             };
+
+            //set media player source to file and play
+            mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+            mediaPlayer.MediaPlayer.Play();
         }
-        
+
 
     }
 }
