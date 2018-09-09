@@ -32,7 +32,7 @@ namespace MyMusicLibrary
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
- //Music Library opened, file picked, file copied in "musicfolder" in apps local folder
+            //Music Library opened, file picked, file copied in "musicfolder" in apps local folder
             var picker = new Windows.Storage.Pickers.FileOpenPicker
             {
                 ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
