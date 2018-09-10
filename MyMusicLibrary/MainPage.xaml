@@ -14,8 +14,8 @@
         </Grid.Background>
         <StackPanel>
             <Button Content="Add Music" HorizontalAlignment="Center" BorderBrush="Black" Background="Gray" Foreground="White" Margin="50,50,50,50" VerticalAlignment="Top" Click="Button_Click"/>
-            <TextBlock Name="title" HorizontalAlignment="Center" FontSize="32"/>
-            <TextBlock Name="artist" HorizontalAlignment="Center" FontSize="32"/>
+            <TextBlock Name="title" HorizontalAlignment="Center" FontSize="32" Foreground="White" FontFamily="Georgia"/>
+            <TextBlock Name="artist" HorizontalAlignment="Center" FontSize="32" Foreground="White" FontFamily="Georgia"/>
             <Image x:Name="albumCover" HorizontalAlignment="Center" Width ="300" Height="300" Margin="0,100,0,0" />
         </StackPanel>
         <MediaPlayerElement x:Name="mediaPlayer" AreTransportControlsEnabled="True" Margin="0,200,0,0" />
