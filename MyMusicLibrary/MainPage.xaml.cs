@@ -69,12 +69,15 @@ namespace MyMusicLibrary
                         albumCoverBitmapImage.SetSource(thumbnail);
                         albumCover.Source = albumCoverBitmapImage;
                     };
+                MusicProperties musicProperties = await newFile.Properties.GetMusicPropertiesAsync();
+                artist.Text = musicProperties.Artist;
+                title.Text = musicProperties.Title;
             }
 
             //Desiree: Here's the part I found for the Album and
             //StringBuilder outputText = new StringBuilder();
             //get music properties
-            //MusicProperties musicProperties = await newFile.Properties.GetMusicPropertiesAsync();
+            //
             //outputText.AppendLine("Album: " + musicProperties.Album);
             //outputText.AppendLine("Title: " + musicProperties.Title);
             //outputText.AppendLine("Artist: " + musicProperties.Artist);
