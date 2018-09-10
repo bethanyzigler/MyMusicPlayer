@@ -62,11 +62,12 @@ namespace MyMusicLibrary
                 mediaPlayer.Source = MediaSource.CreateFromStorageFile(newFile);
                 mediaPlayer.MediaPlayer.Play();
 
-                var albumCover = new BitmapImage();
+                var albumCoverBitmapImage = new BitmapImage();
                 using (StorageItemThumbnail thumbnail = await newFile.GetThumbnailAsync(ThumbnailMode.MusicView, 300))
                     if (thumbnail !=null && thumbnail.Type == ThumbnailType.Image)
                     {
-                        albumCover.SetSource(thumbnail);
+                        albumCoverBitmapImage.SetSource(thumbnail);
+                        albumCover.Source = albumCoverBitmapImage;
                     };
             }
 
