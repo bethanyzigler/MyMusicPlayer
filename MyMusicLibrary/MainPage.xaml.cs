@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.Core;
 using Windows.Storage;
+using Windows.Storage.FileProperties;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -51,14 +54,26 @@ namespace MyMusicLibrary
             //put file in future access list so it can be accessed when application is closed and reopened
             //Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
             //File is copied to local folder for use in music library
-            if (folder != null && file != null)
+            //Album name and Song Title are displayed
+            if (musicFolder != null && file != null)
             {
-                await file.CopyAsync(musicFolder, file.Name, NameCollisionOption.GenerateUniqueName);
-            };
+                var newFile = await file.CopyAsync(musicFolder, file.Name, NameCollisionOption.GenerateUniqueName);
 
-            //set media player source to file and play
-            mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
-            mediaPlayer.MediaPlayer.Play();
+                mediaPlayer.Source = MediaSource.CreateFromStorageFile(newFile);
+                mediaPlayer.MediaPlayer.Play();
+
+            }
+
+            //Desiree: Here's the part I found for the Album and
+            //StringBuilder outputText = new StringBuilder();
+            //get music properties
+            //MusicProperties musicProperties = await newFile.Properties.GetMusicPropertiesAsync();
+            //outputText.AppendLine("Album: " + musicProperties.Album);
+            //outputText.AppendLine("Title: " + musicProperties.Title);
+            //outputText.AppendLine("Artist: " + musicProperties.Artist);
+            //MusicTextFiled.Text = outputText.ToString();
+
+
         }
 
 
